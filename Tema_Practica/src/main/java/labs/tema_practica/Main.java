@@ -14,14 +14,12 @@ public class Main {
 
     public static void main(String[] args) {
         Generator generator = new Generator();
-
-        List<Publication> generatedPublications = generator.generatePublications();
         
-        writePubsIntoFile(generatedPublications);
-
-        List<Subscription> generatedSubscriptions = generator.generateSubscriptions();
+        generator.generatePublications();
+        generator.generateSubscriptions();
         
-        writeSubsIntoFile(generatedSubscriptions);
+        writePubsIntoFile(generator.getPublications());        
+        writeSubsIntoFile(generator.getSubscriptions());
 
     }
 

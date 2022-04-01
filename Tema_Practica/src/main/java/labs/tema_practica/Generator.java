@@ -1,7 +1,6 @@
 package labs.tema_practica;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -20,7 +19,7 @@ public class Generator {
     List<Subscription> subscriptions = new ArrayList<>();
     List<Publication> publications = new ArrayList<>();
 
-    public List<Publication> generatePublications() {
+    public void generatePublications() {
 
         while (publications.size() < PUBLICATIONS_NUMBER) {
 
@@ -35,10 +34,10 @@ public class Generator {
             publications.add(publication);
         }
 
-        return publications;
+        //return publications;
     }
 
-    public List<Subscription> generateSubscriptions() {
+    public void generateSubscriptions() {
 
         generateConstraints(Attribute.Company.toString(), COMPANY_FREQUENCY, 0, 0);
         generateConstraints(Attribute.Value.toString(), VALUE_FREQUENCY, MIN_VALUE, MAX_VALUE);
@@ -46,7 +45,7 @@ public class Generator {
         generateConstraints(Attribute.Variation.toString(), VARIATION_FREQUENCY, MIN_VARIATION, MAX_VARIATION);
         generateConstraints(Attribute.Date.toString(), DATE_FREQUENCY, MIN_DATE, MAX_DATE);
 
-        return subscriptions;
+        //return subscriptions;
     }
 
 
@@ -113,4 +112,14 @@ public class Generator {
         
         return LocalDate.ofEpochDay(randomDay);
     }
+
+    public List<Subscription> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public List<Publication> getPublications() {
+        return publications;
+    }
+    
+    
 }
