@@ -49,7 +49,7 @@ public class Generator {
     }
 
 
-    private <T> void generateConstraints(String attributeName, double frequency, T lowerLimit, T upperLimit) {
+    private void generateConstraints(String attributeName, double frequency, Object lowerLimit, Object upperLimit) {
         int nrOfConstraints = 0;
         List<Subscription> availableSubscriptions = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class Generator {
                     LocalDate attributeValue = generateRandomDate((LocalDate) lowerLimit, (LocalDate) upperLimit);
                     constraint = new Constraint(attributeName, operator, attributeValue);
                 } else {
-                    double attributeValue = generateRandomNumber((double) lowerLimit, (double) upperLimit);
+                    double attributeValue = generateRandomNumber((double) lowerLimit,(double) upperLimit);
                     constraint = new Constraint(attributeName, operator, attributeValue);
                 }
             }

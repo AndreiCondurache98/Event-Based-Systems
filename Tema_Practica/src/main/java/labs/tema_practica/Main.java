@@ -16,7 +16,12 @@ public class Main {
         Generator generator = new Generator();
         
         generator.generatePublications();
+        
+        System.out.println("NUMBER OF GENERATED PUBLICATIONS: " + generator.getPublications().size());
+        
         generator.generateSubscriptions();
+        
+        System.out.println("NUMBER OF GENERATED SUBSCRIPTIONS: " + generator.getSubscriptions().size());
         
         writePubsIntoFile(generator.getPublications());        
         writeSubsIntoFile(generator.getSubscriptions());
