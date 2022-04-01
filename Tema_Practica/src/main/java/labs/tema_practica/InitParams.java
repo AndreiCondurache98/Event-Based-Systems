@@ -12,11 +12,11 @@ public final class InitParams {
     public static final int PUBLICATIONS_NUMBER = 10;
     public static final int SUBSCRIPTIONS_NUMBER = 10;
     
-    public static final double COMPANY_FREQUENCY = 0.8;
-    public static final double VALUE_FREQUENCY = 0.4;
-    public static final double DROP_FREQUENCY = 0.5;
-    public static final double VARIATION_FREQUENCY = 0.4;
-    public static final double DATE_FREQUENCY = 0.4;
+    public static final double COMPANY_FREQUENCY = 0.5;
+    public static final double VALUE_FREQUENCY = 0.0;
+    public static final double DROP_FREQUENCY = 0.3;
+    public static final double VARIATION_FREQUENCY = 0.3;
+    public static final double DATE_FREQUENCY = 0.3;
     public static final double EQ_FREQUENCY = 0.6;
 
     public static final double MIN_VALUE = 0.0;

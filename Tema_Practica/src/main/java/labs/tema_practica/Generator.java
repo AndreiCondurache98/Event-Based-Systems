@@ -62,7 +62,8 @@ public class Generator {
                 if (nrOfConstraints < (int) Math.ceil(frequency * EQ_FREQUENCY * SUBSCRIPTIONS_NUMBER)) {
                     constraint = new Constraint(attributeName, "=", attributeValue);
                 } else {
-                    constraint = new Constraint(attributeName, "!=", attributeValue);
+                    String operator = (OPERATOR.values()[random.nextInt(2)]).getOperator();
+                    constraint = new Constraint(attributeName, operator, attributeValue);
                 }
             } else {
                 String operator = (OPERATOR.values()[random.nextInt(OPERATOR.values().length)]).getOperator();
