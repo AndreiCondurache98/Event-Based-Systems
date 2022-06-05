@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 
 public class Broker {
     private final static String SUB_QUEUE = "subscribes";
+    //private final static String SUB_QUEUE = "publications";
 
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
