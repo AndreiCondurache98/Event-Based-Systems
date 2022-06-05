@@ -6,23 +6,54 @@ import com.rabbitmq.client.DeliverCallback;
 import java.nio.charset.StandardCharsets;
 
 public class Broker {
-    private final static String SUB_QUEUE = "subscribes";
-    //private final static String SUB_QUEUE = "publications";
+    private final static String RECV_SUB_QUEUE = "start-subscriptions";
+    private final static String EXCHANGE_NAME = "subs-exchange";
+
+    private final static String RECV_NOTIFICATION_QUEUE = "broker-forward-notification";
+    private final static String FORWARD_NOTIFICATION_QUEUE = "forward-notification";
 
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        Connection connection = factory.newConnection();
-        Channel channel = connection.createChannel();
 
-        channel.queueDeclare(SUB_QUEUE, false, false, false, null);
-        System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+        Connection subConnection = factory.newConnection();
+        Channel subChannel = subConnection.createChannel();
+        subChannel.queueDeclare(RECV_SUB_QUEUE, false, false, false, null);
+
+        Connection forwardSubConnection = factory.newConnection();
+        Channel forwardSubChannel = forwardSubConnection.createChannel();
+        forwardSubChannel.exchangeDeclare(EXCHANGE_NAME, "fanout");
+
+        System.out.println(" [*] Waiting for subscriptions...");
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
-            System.out.println(" [x] Received: '" + message + "'");
+            String subscription = new String(delivery.getBody(), StandardCharsets.UTF_8);
+            System.out.println(" [x] Received: '" + subscription + "'");
+
+            forwardSubChannel.basicPublish(EXCHANGE_NAME, "", null, subscription.getBytes());
+            System.out.println(" [v] Forwarded subscription to PubBroker.");
         };
 
-        channel.basicConsume(SUB_QUEUE, true, deliverCallback, consumerTag -> { });
+        subChannel.basicConsume(RECV_SUB_QUEUE, true, deliverCallback, consumerTag -> { });
+
+        Connection recvNotifConnection = factory.newConnection();
+        Channel recvNotifChannel = recvNotifConnection.createChannel();
+        recvNotifChannel.queueDeclare(RECV_NOTIFICATION_QUEUE, false, false, false, null);
+
+        Connection forwardNotifConnection = factory.newConnection();
+        Channel forwardNotifChannel = forwardNotifConnection.createChannel();
+        forwardNotifChannel.queueDeclare(FORWARD_NOTIFICATION_QUEUE, false, false, false, null);
+
+        System.out.println(" [*] Waiting for notifications...");
+
+        DeliverCallback notificationCallback = (consumerTag, delivery) -> {
+            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
+            System.out.println(" [x] Received: '" + message + "'");
+
+            forwardNotifChannel.basicPublish("", FORWARD_NOTIFICATION_QUEUE, null, message.getBytes());
+            System.out.println(" [v] Forwarded notification to Subscriber.");
+        };
+
+        recvNotifChannel.basicConsume(RECV_NOTIFICATION_QUEUE, true, notificationCallback, consumerTag -> { });
     }
 }

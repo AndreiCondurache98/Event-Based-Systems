@@ -4,19 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8da5d5a5-bd87-4d57-8147-083d0b20c0cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../PubBroker/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PubBroker/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PubBroker/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PubBroker/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PubBroker/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PubBroker/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PubBroker/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PubBroker/src/main/java/PubBroker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../PubBroker/target/classes/PubBroker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Broker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Broker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Broker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Broker.class" afterDir="false" />
+    <list default="true" id="94e5964a-5639-4296-94ed-5c3c30c3cf40" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PubBroker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/PubBroker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/src/main/java/Broker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/src/main/java/Broker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/target/classes/Broker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/target/classes/Broker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" afterDir="false" />
@@ -37,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectId" id="2A7Pv9EgykHvFTDmFaBBNyOVf6H" />
+  <component name="ProjectId" id="2AAWTHc5mXvEe7Um0ti6j9SldgD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -46,39 +46,34 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Publisher" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
-    <configuration name="Broker" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Broker" />
-      <module name="Broker" />
+    <configuration name="PubBroker" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="PubBroker" />
+      <module name="PubBroker" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Broker" />
+        <item itemvalue="Application.PubBroker" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8da5d5a5-bd87-4d57-8147-083d0b20c0cf" name="Changes" comment="" />
-      <created>1654357879540</created>
+      <changelist id="94e5964a-5639-4296-94ed-5c3c30c3cf40" name="Changes" comment="" />
+      <created>1654452877915</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1654357879540</updated>
-      <workItem from="1654357881364" duration="3230000" />
+      <updated>1654452877915</updated>
+      <workItem from="1654452879417" duration="5721000" />
     </task>
     <servers />
   </component>
@@ -95,9 +90,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

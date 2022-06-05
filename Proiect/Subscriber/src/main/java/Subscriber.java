@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
@@ -8,11 +9,13 @@ import java.util.regex.Pattern;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.DeliverCallback;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Subscriber {
-    private final static String QUEUE_NAME = "subscribes";
+    private final static String QUEUE_SEND = "start-subscriptions";
+    private final static String QUEUE_RECEIVE = "forward-notification";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -23,7 +26,7 @@ public class Subscriber {
              Channel channel = connection.createChannel();
              Scanner myReader = new Scanner(myObj)) {
 
-            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+            channel.queueDeclare(QUEUE_SEND, false, false, false, null);
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -49,9 +52,21 @@ public class Subscriber {
 
                 json.put("subscription", ja);
 
-                channel.basicPublish("", QUEUE_NAME, null, json.toString().getBytes());
+                channel.basicPublish("", QUEUE_SEND, null, json.toString().getBytes());
                 System.out.println(" [x] Sent '" + json + "'");
             }
+
+            Connection recvNotifConnection = factory.newConnection();
+            Channel recvNotifChannel = recvNotifConnection.createChannel();
+            recvNotifChannel.queueDeclare(QUEUE_RECEIVE, false, false, false, null);
+            System.out.println(" [*] Waiting for notifications...");
+
+            DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+                String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
+                System.out.println(" [x] Notification: '" + message + "'");
+            };
+
+            recvNotifChannel.basicConsume(QUEUE_RECEIVE, true, deliverCallback, consumerTag -> { });
         }
     }
 }

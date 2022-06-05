@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Publisher {
-    private final static String QUEUE_NAME = "publications";
+    private final static String QUEUE_NAME = "start-publications";
 
     public static void main(String[] argv) throws Exception {
 
@@ -38,7 +38,6 @@ public class Publisher {
                 while (regexMatcher.find()) {
                     matchList.add(regexMatcher.group(1));
                     String pub = regexMatcher.group(1);
-//                    System.out.println("Pub: " + pub);
                     String[] fields = pub.split(",");
 
                     Map<String, String> map = new LinkedHashMap<>();
