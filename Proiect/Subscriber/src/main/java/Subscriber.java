@@ -15,13 +15,37 @@ import org.json.JSONObject;
 
 public class Subscriber {
     private final static String QUEUE_SEND = "start-subscriptions";
-    private final static String QUEUE_RECEIVE = "forward-notification";
+    //private final static String QUEUE_RECEIVE = "forward-notification";
+    private final static String EXCHANGE_NAME_NOTIFY = "direct_notifications";
 
     public static void main(String[] args) throws IOException, TimeoutException {
+
+        String uuid = UUID.randomUUID().toString();
+        System.out.println("GENERATED GUID: " + uuid);
+        //String uuid = "111";
+
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         File myObj = new File("subscriptions.txt");
 
+        /** WAITING FOR NOTICATIONS*/
+        Connection recvNotifConnection = factory.newConnection();
+        Channel recvNotifChannel = recvNotifConnection.createChannel();
+
+        recvNotifChannel.exchangeDeclare(EXCHANGE_NAME_NOTIFY, "direct");
+        String queueName = recvNotifChannel.queueDeclare().getQueue();
+        recvNotifChannel.queueBind(queueName, EXCHANGE_NAME_NOTIFY, uuid);
+
+        System.out.println(" [*] Waiting for notifications...");
+
+        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
+            System.out.println(" [x] Notification: '" + message + "'");
+        };
+
+        recvNotifChannel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
+
+        /** SENDIND SUBSCRIPTIONS*/
         try (Connection connection = factory.newConnection();
              Channel channel = connection.createChannel();
              Scanner myReader = new Scanner(myObj)) {
@@ -51,22 +75,12 @@ public class Subscriber {
                 }
 
                 json.put("subscription", ja);
+                json.put("guid", uuid);
 
                 channel.basicPublish("", QUEUE_SEND, null, json.toString().getBytes());
                 System.out.println(" [x] Sent '" + json + "'");
             }
 
-            Connection recvNotifConnection = factory.newConnection();
-            Channel recvNotifChannel = recvNotifConnection.createChannel();
-            recvNotifChannel.queueDeclare(QUEUE_RECEIVE, false, false, false, null);
-            System.out.println(" [*] Waiting for notifications...");
-
-            DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-                String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
-                System.out.println(" [x] Notification: '" + message + "'");
-            };
-
-            recvNotifChannel.basicConsume(QUEUE_RECEIVE, true, deliverCallback, consumerTag -> { });
         }
     }
 }
