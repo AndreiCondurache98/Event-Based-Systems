@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class Broker {
+public class SubBroker {
     private final static String RECV_SUB_QUEUE = "start-subscriptions";
     private final static String EXCHANGE_NAME = "subs-exchange";
     private final static String EXCHANGE_NAME_PUB = "direct_pubs";

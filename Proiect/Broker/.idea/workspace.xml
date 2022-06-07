@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8da5d5a5-bd87-4d57-8147-083d0b20c0cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Broker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Broker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Broker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Broker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PubBroker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PubBroker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PubBroker/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PubBroker/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PubBroker/src/main/java/PubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PubBroker/src/main/java/PubBroker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PubBroker/target/classes/PubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PubBroker/target/classes/PubBroker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Publisher/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/publications.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Subscriber/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Broker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubBroker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +42,8 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
-    <configuration name="Broker" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Broker" />
+    <configuration name="SubBroker" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SubBroker" />
       <module name="Broker" />
       <method v="2">
         <option name="Make" enabled="true" />
