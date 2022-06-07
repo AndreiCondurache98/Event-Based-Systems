@@ -2,8 +2,12 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
+import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Broker {
     private final static String RECV_SUB_QUEUE = "start-subscriptions";
@@ -11,6 +15,8 @@ public class Broker {
 
     private final static String RECV_NOTIFICATION_QUEUE = "broker-forward-notification";
     private final static String FORWARD_NOTIFICATION_QUEUE = "forward-notification";
+
+    private Map<String, List<String>> subscriptions = new HashMap<>();
 
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
@@ -28,6 +34,8 @@ public class Broker {
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String subscription = new String(delivery.getBody(), StandardCharsets.UTF_8);
+            JSONObject subJson = new JSONObject(subscription);
+
             System.out.println(" [x] Received: '" + subscription + "'");
 
             forwardSubChannel.basicPublish(EXCHANGE_NAME, "", null, subscription.getBytes());
@@ -47,10 +55,10 @@ public class Broker {
         System.out.println(" [*] Waiting for notifications...");
 
         DeliverCallback notificationCallback = (consumerTag, delivery) -> {
-            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
-            System.out.println(" [x] Received: '" + message + "'");
+            String notification = new String(delivery.getBody(), StandardCharsets.UTF_8);
+            System.out.println(" [x] Received: '" + notification + "'");
 
-            forwardNotifChannel.basicPublish("", FORWARD_NOTIFICATION_QUEUE, null, message.getBytes());
+            forwardNotifChannel.basicPublish("", FORWARD_NOTIFICATION_QUEUE, null, notification.getBytes());
             System.out.println(" [v] Forwarded notification to Subscriber.");
         };
 

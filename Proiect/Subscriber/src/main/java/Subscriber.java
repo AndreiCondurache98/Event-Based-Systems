@@ -16,6 +16,7 @@ import org.json.JSONObject;
 public class Subscriber {
     private final static String QUEUE_SEND = "start-subscriptions";
     private final static String QUEUE_RECEIVE = "forward-notification";
+    private final static String GUID = UUID.randomUUID().toString();
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -50,6 +51,7 @@ public class Subscriber {
                     ja.put(m);
                 }
 
+                json.put("id", GUID);
                 json.put("subscription", ja);
 
                 channel.basicPublish("", QUEUE_SEND, null, json.toString().getBytes());

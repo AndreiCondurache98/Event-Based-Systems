@@ -1,10 +1,10 @@
-{ (company,=,Tesla); (drop,!=,-0.3026225948065535); }
-{ (company,=,Tesla); (drop,>=,-1.9162744924255988); }
-{ (company,=,Tesla); (drop,=,0.36563117261950384); }
-{ (company,=,Tesla); }
-{ (company,!=,Apple); }
-{ (company,!=,UIPath); }
-{ (company,!=,Apple); }
+{ (company,=,TESLA); (drop,!=,-0.3026225948065535); }
+{ (company,=,TESLA); (drop,>=,-1.9162744924255988); }
+{ (company,=,TESLA); (drop,=,0.36563117261950384); }
+{ (company,=,TESLA); }
+{ (company,!=,APPLE); }
+{ (company,!=,UIPATH); }
+{ (company,!=,APPLE); }
 { (value,<=,5.689417476165946); }
 { (value,<,4.783973335993728); }
 { (value,>=,-2.361960470776825); }
