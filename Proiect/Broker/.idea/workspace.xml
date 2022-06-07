@@ -13,13 +13,10 @@
       <change beforePath="$PROJECT_DIR$/../PubBroker/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PubBroker/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PubBroker/src/main/java/PubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PubBroker/src/main/java/PubBroker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PubBroker/target/classes/PubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PubBroker/target/classes/PubBroker.class" afterDir="false" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../Publisher/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/publications.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/pom.xml" afterDir="false" />
-=======
->>>>>>> f5990dfbaf3e37569d77983c430c6180589a4897
       <change beforePath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" afterDir="false" />
@@ -59,18 +56,13 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
-    <configuration name="Broker" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Broker" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Broker" />
       <module name="Broker" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Broker" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

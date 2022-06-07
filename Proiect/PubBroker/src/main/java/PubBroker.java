@@ -13,7 +13,6 @@ import java.util.*;
 public class PubBroker {
     private final static String EXCHANGE_NAME = "subs-exchange";
     private final static String EXCHANGE_NAME_PUB = "direct_pubs";
-    private final static String SEND_NOTIF_QUEUE = "broker-forward-notification";
     private final static String RECV_PUB_QUEUE = "start-publications";
     private final static Map<String, List<JSONArray>> subscriptions = new HashMap<>();
 
@@ -24,7 +23,7 @@ public class PubBroker {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
 
-        /** RECEIVEING SUBSCRIPTIONS */
+        /* RECEIVING SUBSCRIPTIONS */
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
@@ -50,8 +49,7 @@ public class PubBroker {
 
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
 
-
-        /**RECEIVING PUBLICATIONS*/
+        /* RECEIVING PUBLICATIONS */
         Connection recvPubConnection = factory.newConnection();
         Channel recvPubChannel = recvPubConnection.createChannel();
         recvPubChannel.queueDeclare(RECV_PUB_QUEUE, false, false, false, null);
@@ -70,24 +68,20 @@ public class PubBroker {
 
             for (String key : subscriptions.keySet()) {
                 List<JSONArray> currentSubscriptions = subscriptions.get(key);
-                System.out.println(" [x] Map length : '" + currentSubscriptions.size() + "'");
 
                 for(JSONArray s : currentSubscriptions) {
                     try {
                         if(match(publicationJSON, s)) {
                             System.out.println(" [x] Subscription : '" + s + "'");
                             System.out.println("A facut match!");
+                            String response = s + "#" + publication;
+                            sendNotifChannel.basicPublish(EXCHANGE_NAME_PUB, key, null, response.getBytes());
                         }
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
             }
-
-            String receiverUUID = "NU STIM INCA"; //Aflat in urma operatiei de matching
-            //String receiverUUID = "333";
-
-            sendNotifChannel.basicPublish(EXCHANGE_NAME_PUB, receiverUUID, null, publication.getBytes());
         };
 
         recvPubChannel.basicConsume(RECV_PUB_QUEUE, true, recvNotifCallback, consumerTag -> { });

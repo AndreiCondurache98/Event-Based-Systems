@@ -4,7 +4,3 @@
 { (company,=,TESLA); }
 { (company,!=,APPLE); }
 { (company,!=,UIPATH); }
-{ (company,!=,APPLE); }
-{ (value,<=,5.689417476165946); }
-{ (value,<,4.783973335993728); }
-{ (value,>=,-2.361960470776825); }

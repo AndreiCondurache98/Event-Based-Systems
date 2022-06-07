@@ -2,38 +2,40 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class Broker {
     private final static String RECV_SUB_QUEUE = "start-subscriptions";
     private final static String EXCHANGE_NAME = "subs-exchange";
     private final static String EXCHANGE_NAME_PUB = "direct_pubs";
     private final static String EXCHANGE_NAME_NOTIFY = "direct_notifications";
-    //private final static String EXCHANGE_NAME = "forward-notification";
+    private final static String GUID = UUID.randomUUID().toString();
 
-    private final static String RECV_NOTIFICATION_QUEUE = "broker-forward-notification";
-    private final static String FORWARD_NOTIFICATION_QUEUE = "forward-notification";
-
-    private Map<String, List<String>> subscriptions = new HashMap<>();
+    /**
+     * map with (publication, [sub's id]), where value set contains sub's id which receive notification for publication X.
+     *  Scope: if subscriber has 2 subs which match one pub, he will be notified only ONCE
+     */
+    public static volatile ConcurrentMap<String, Set<String>> notificationSent;
 
     public static void main(String[] argv) throws Exception {
-
-        HashMap<String, List<Object>> routingTable = new HashMap<>();
-
-        String uuid = UUID.randomUUID().toString();
-        System.out.println("GENERATED GUID: " + uuid);
+        /**
+         * Routing table (subscription, [subscribers' guid]).
+         *  Scope: PUB-BROKER respond with message "subscription#publication" and we need to know who the notification is for.
+         *      PUB-BROKER tells what subscription matches current publication and according to routing table, we notify those subscribers who
+         *          have sent current subscription.
+         */
+        Map<String, Set<String>> routingTable = new HashMap<>();
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
 
-        /** RECEIVEING SUBSCRIPTION AND FORWARD IT*/
+        /* RECEIVING SUBSCRIPTION AND FORWARD IT */
         Connection subConnection = factory.newConnection();
         Channel subChannel = subConnection.createChannel();
         subChannel.queueDeclare(RECV_SUB_QUEUE, false, false, false, null);
@@ -49,30 +51,28 @@ public class Broker {
             JSONObject subAsJson = new JSONObject(subscription);
             System.out.println(" [x] Received: '" + subscription + "'");
 
-            subAsJson.put("guid", uuid);
+            JSONArray subArray = subAsJson.getJSONArray("subscription");
+            String sub = subArray.toString();
 
-            if (!routingTable.containsKey(uuid)) {
-                List<Object> subscriptions = new ArrayList<>();
-                subscriptions.add(subAsJson.get("subscription"));
-                routingTable.put(uuid, subscriptions);
-            } else
-            {
-                routingTable.get(uuid).add(subAsJson.get("subscription"));
+            if (!routingTable.containsKey(sub)) {
+                routingTable.put(sub, new HashSet<>());
             }
 
+            routingTable.get(sub).add(subAsJson.getString("id"));
+            subAsJson.put("id", GUID);
+
             forwardSubChannel.basicPublish(EXCHANGE_NAME, "", null, subAsJson.toString().getBytes());
-            System.out.println(" [v] Forwarded subscription to PubBroker.");
         };
 
         subChannel.basicConsume(RECV_SUB_QUEUE, true, deliverCallback, consumerTag -> { });
 
-        /** RECEIVEING PUBLICATION FROM PUBBROKER AND NOTIFY SUBSCRIBER */
+        /* RECEIVING PUBLICATION FROM PUB-BROKER AND NOTIFY SUBSCRIBER */
 
         Connection recvNotifConnection = factory.newConnection();
         Channel recvNotifChannel = recvNotifConnection.createChannel();
         recvNotifChannel.exchangeDeclare(EXCHANGE_NAME_PUB, "direct");
         String queueName = recvNotifChannel.queueDeclare().getQueue();
-        recvNotifChannel.queueBind(queueName, EXCHANGE_NAME_PUB, uuid);
+        recvNotifChannel.queueBind(queueName, EXCHANGE_NAME_PUB, GUID);
 
         System.out.println(" [*] Waiting for notifications...");
 
@@ -82,17 +82,26 @@ public class Broker {
 
         DeliverCallback notificationCallback = (consumerTag, delivery) -> {
             String notification = new String(delivery.getBody(), StandardCharsets.UTF_8);
-            System.out.println(" [x] Received: '" + notification + "'");
+            String[] response = notification.split("#");
+            String subscriptionMatched = response[0];
+            String publicationMatched = response[1];
+            Set<String> guidsToNotify = routingTable.get(subscriptionMatched);
 
-            String receiverUUID = "NU STIM INCA"; //Aflat in urma operatiei de matching
+            for(String guid : guidsToNotify) {
+                String message = "[NOTIFICATION] Your subscription: " + subscriptionMatched + " matches publication: " + publicationMatched;
 
-            String message2 = "AI FOST NOTIFICAT";
-
-            forwardNotifChannel.basicPublish(EXCHANGE_NAME_NOTIFY, receiverUUID, null, message2.getBytes());
-            System.out.println(" [v] Forwarded notification to Subscriber.");
+                if(!notificationSent.containsKey(publicationMatched)) {
+                    notificationSent.put(publicationMatched, new HashSet<>());
+                    notificationSent.get(publicationMatched).add(guid);
+                    forwardNotifChannel.basicPublish(EXCHANGE_NAME_NOTIFY, guid, null, message.getBytes());
+                }
+                else if(!notificationSent.get(publicationMatched).contains(guid)) {
+                    notificationSent.get(publicationMatched).add(guid);
+                    forwardNotifChannel.basicPublish(EXCHANGE_NAME_NOTIFY, guid, null, message.getBytes());
+                }
+            }
         };
 
         recvNotifChannel.basicConsume(queueName, true, notificationCallback, consumerTag -> { });
-
     }
 }
