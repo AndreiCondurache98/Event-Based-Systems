@@ -13,33 +13,39 @@ import com.rabbitmq.client.DeliverCallback;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Subscriber {
-    private final static String QUEUE_SEND = "start-subscriptions";
-    private final static String EXCHANGE_NAME_NOTIFY = "direct_notifications";
-    private final static String GUID = UUID.randomUUID().toString();
+public class Subscriber extends Thread {
+    private final String QUEUE_SEND = "start-subscriptions";
+    private final String EXCHANGE_NAME_NOTIFY = "direct_notifications";
+    private final String GUID = UUID.randomUUID().toString();
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public void run() {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        File myObj = new File("subscriptions1.txt");
+        File myObj = new File("subscriptions2.txt");
 
         /* WAITING FOR NOTIFICATIONS */
-        Connection recvNotifConnection = factory.newConnection();
-        Channel recvNotifChannel = recvNotifConnection.createChannel();
+        Connection recvNotifConnection;
+        Channel recvNotifChannel;
+        try {
+            recvNotifConnection = factory.newConnection();
+            recvNotifChannel = recvNotifConnection.createChannel();
+            recvNotifChannel.exchangeDeclare(EXCHANGE_NAME_NOTIFY, "direct");
 
-        recvNotifChannel.exchangeDeclare(EXCHANGE_NAME_NOTIFY, "direct");
-        String queueName = recvNotifChannel.queueDeclare().getQueue();
-        recvNotifChannel.queueBind(queueName, EXCHANGE_NAME_NOTIFY, GUID);
+            String queueName = recvNotifChannel.queueDeclare().getQueue();
+            recvNotifChannel.queueBind(queueName, EXCHANGE_NAME_NOTIFY, GUID);
 
-        System.out.println(" [*] Waiting for notifications...");
+            System.out.println(" [*] Waiting for notifications...");
 
-        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String notification = new String(delivery.getBody(), StandardCharsets.UTF_8);
+            DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+                String notification = new String(delivery.getBody(), StandardCharsets.UTF_8);
 
-            System.out.println(notification);
-        };
+                System.out.println(notification);
+            };
 
-        recvNotifChannel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
+            recvNotifChannel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
 
         /* SENDING SUBSCRIPTIONS */
         try (Connection connection = factory.newConnection();
@@ -74,6 +80,8 @@ public class Subscriber {
                 channel.basicPublish("", QUEUE_SEND, null, json.toString().getBytes());
                 System.out.println(" [x] Sent '" + json + "'");
             }
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
         }
     }
 }

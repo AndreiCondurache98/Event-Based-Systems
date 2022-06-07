@@ -5,86 +5,94 @@ import com.rabbitmq.client.DeliverCallback;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeoutException;
 
-public class PubBroker {
-    private final static String EXCHANGE_NAME = "subs-exchange";
-    private final static String EXCHANGE_NAME_PUB = "direct_pubs";
-    private final static String RECV_PUB_QUEUE = "start-publications";
-    private final static Map<String, List<JSONArray>> subscriptions = new HashMap<>();
+public class PubBroker extends Thread {
+    private final String EXCHANGE_NAME = "subs-exchange";
+    private final String EXCHANGE_NAME_PUB = "direct_pubs";
+    private final String RECV_PUB_QUEUE = "start-publications";
+    private final Map<String, List<JSONArray>> routingTable = new HashMap<>();
 
-    public static void main(String[] argv) throws Exception {
-
-        HashMap<String, List<Object>> routingTable = new HashMap<>();
-
+    public void run() {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
+        try {
+            /* RECEIVING SUBSCRIPTIONS */
+            Connection connection = factory.newConnection();
+            Channel channel = connection.createChannel();
 
-        /* RECEIVING SUBSCRIPTIONS */
-        Connection connection = factory.newConnection();
-        Channel channel = connection.createChannel();
+            channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
+            String queueName = channel.queueDeclare().getQueue();
+            channel.queueBind(queueName, EXCHANGE_NAME, "");
 
-        channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
-        String queueName = channel.queueDeclare().getQueue();
-        channel.queueBind(queueName, EXCHANGE_NAME, "");
+            System.out.println(" [*] Waiting for forwarded subscriptions...");
 
-        System.out.println(" [*] Waiting for forwarded subscriptions...");
+            DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+                String subscription = new String(delivery.getBody(), StandardCharsets.UTF_8);
+                JSONObject subJson = new JSONObject(subscription);
+                String guid = subJson.getString("id");
 
-        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
-            String subscription = new String(delivery.getBody(), StandardCharsets.UTF_8);
-            JSONObject subJson = new JSONObject(subscription);
-            String guid = subJson.getString("id");
+                if (!routingTable.containsKey(guid)) {
+                    routingTable.put(guid, new ArrayList<>());
+                }
 
-            if (!subscriptions.containsKey(guid)) {
-                subscriptions.put(guid, new ArrayList<>());
-            }
+                routingTable.get(guid).add(subJson.getJSONArray("subscription"));
 
-            subscriptions.get(guid).add(subJson.getJSONArray("subscription"));
+                System.out.println(" [x] : '" + subscription + "'");
+            };
 
-            System.out.println(" [x] : '" + subscription + "'");
-        };
-
-        channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
+            channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
+            });
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
 
         /* RECEIVING PUBLICATIONS */
-        Connection recvPubConnection = factory.newConnection();
-        Channel recvPubChannel = recvPubConnection.createChannel();
-        recvPubChannel.queueDeclare(RECV_PUB_QUEUE, false, false, false, null);
+        try {
+            Connection recvPubConnection = factory.newConnection();
+            Channel recvPubChannel = recvPubConnection.createChannel();
+            recvPubChannel.queueDeclare(RECV_PUB_QUEUE, false, false, false, null);
 
-        Connection sendNotifConnection = factory.newConnection();
-        Channel sendNotifChannel = sendNotifConnection.createChannel();
-        sendNotifChannel.exchangeDeclare(EXCHANGE_NAME_PUB, "direct");
+            Connection sendNotifConnection = factory.newConnection();
+            Channel sendNotifChannel = sendNotifConnection.createChannel();
+            sendNotifChannel.exchangeDeclare(EXCHANGE_NAME_PUB, "direct");
 
-        System.out.println(" [*] Waiting for publications...");
+            System.out.println(" [*] Waiting for publications...");
 
-        DeliverCallback recvNotifCallback = (consumerTag, delivery) -> {
-            String publication = new String(delivery.getBody(), StandardCharsets.UTF_8);
-            JSONObject publicationJSON = new JSONObject(publication);
+            DeliverCallback recvNotifCallback = (consumerTag, delivery) -> {
+                String publication = new String(delivery.getBody(), StandardCharsets.UTF_8);
+                JSONObject publicationJSON = new JSONObject(publication);
 
-            System.out.println(" [x] Publication : '" + publicationJSON + "'");
+                System.out.println(" [x] Publication : '" + publicationJSON + "'");
 
-            for (String key : subscriptions.keySet()) {
-                List<JSONArray> currentSubscriptions = subscriptions.get(key);
+                for (String key : routingTable.keySet()) {
+                    List<JSONArray> currentSubscriptions = routingTable.get(key);
 
-                for(JSONArray s : currentSubscriptions) {
-                    try {
-                        if(match(publicationJSON, s)) {
-                            System.out.println(" [x] Subscription : '" + s + "'");
-                            System.out.println("A facut match!");
-                            String response = s + "#" + publication;
-                            sendNotifChannel.basicPublish(EXCHANGE_NAME_PUB, key, null, response.getBytes());
+                    for (JSONArray s : currentSubscriptions) {
+                        try {
+                            if (match(publicationJSON, s)) {
+                                System.out.println(" [x] Subscription : '" + s + "'");
+                                System.out.println("A facut match!");
+                                String response = s + "#" + publication;
+                                sendNotifChannel.basicPublish(EXCHANGE_NAME_PUB, key, null, response.getBytes());
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
                         }
-                    } catch (ParseException e) {
-                        e.printStackTrace();
                     }
                 }
-            }
-        };
+            };
 
-        recvPubChannel.basicConsume(RECV_PUB_QUEUE, true, recvNotifCallback, consumerTag -> { });
+            recvPubChannel.basicConsume(RECV_PUB_QUEUE, true, recvNotifCallback, consumerTag -> {
+            });
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
     }
 
     private static boolean match(JSONObject publication, JSONArray subscription) throws ParseException {
