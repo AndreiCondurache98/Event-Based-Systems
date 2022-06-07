@@ -12,19 +12,26 @@ import java.util.*;
 
 public class PubBroker {
     private final static String EXCHANGE_NAME = "subs-exchange";
+    private final static String EXCHANGE_NAME_PUB = "direct_pubs";
     private final static String SEND_NOTIF_QUEUE = "broker-forward-notification";
     private final static String RECV_PUB_QUEUE = "start-publications";
     private final static Map<String, List<JSONArray>> subscriptions = new HashMap<>();
 
     public static void main(String[] argv) throws Exception {
+
+        HashMap<String, List<Object>> routingTable = new HashMap<>();
+
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
+
+        /** RECEIVEING SUBSCRIPTIONS */
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
         channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, EXCHANGE_NAME, "");
+
         System.out.println(" [*] Waiting for forwarded subscriptions...");
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
@@ -43,13 +50,16 @@ public class PubBroker {
 
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
 
+
+        /**RECEIVING PUBLICATIONS*/
         Connection recvPubConnection = factory.newConnection();
         Channel recvPubChannel = recvPubConnection.createChannel();
         recvPubChannel.queueDeclare(RECV_PUB_QUEUE, false, false, false, null);
 
         Connection sendNotifConnection = factory.newConnection();
         Channel sendNotifChannel = sendNotifConnection.createChannel();
-        sendNotifChannel.queueDeclare(SEND_NOTIF_QUEUE, false, false, false, null);
+        sendNotifChannel.exchangeDeclare(EXCHANGE_NAME_PUB, "direct");
+
         System.out.println(" [*] Waiting for publications...");
 
         DeliverCallback recvNotifCallback = (consumerTag, delivery) -> {
@@ -74,7 +84,10 @@ public class PubBroker {
                 }
             }
 
-            sendNotifChannel.basicPublish("", SEND_NOTIF_QUEUE, null, publication.getBytes());
+            String receiverUUID = "NU STIM INCA"; //Aflat in urma operatiei de matching
+            //String receiverUUID = "333";
+
+            sendNotifChannel.basicPublish(EXCHANGE_NAME_PUB, receiverUUID, null, publication.getBytes());
         };
 
         recvPubChannel.basicConsume(RECV_PUB_QUEUE, true, recvNotifCallback, consumerTag -> { });

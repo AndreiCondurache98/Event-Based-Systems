@@ -13,10 +13,13 @@
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PubBroker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/PubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PubBroker.class" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../Publisher/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/publications.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/pom.xml" afterDir="false" />
+=======
+>>>>>>> f5990dfbaf3e37569d77983c430c6180589a4897
       <change beforePath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" afterDir="false" />
@@ -49,6 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="PubBroker" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
@@ -89,5 +93,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
