@@ -1,5 +1,7 @@
 package labs.tema_practica;
 
+import java.util.Locale;
+
 /**
  *
  * @author Andrei
@@ -20,7 +22,7 @@ public class Constraint {
 
     @Override
     public String toString() {
-        return "("+ attribute + ", " + operator + ", " + value + ')';
+        return "("+ attribute.toLowerCase() + ", " + operator + ", " + value + ')';
     }
     public String getAttribute() {
         return attribute;

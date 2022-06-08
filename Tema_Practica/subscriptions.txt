@@ -1,10 +1,10 @@
-{ (Company, =, APPLE);  }
-{ (Company, =, APPLE);  }
-{ (Company, =, AMAZON); (Variation, <, 0.65);  }
-{ (Company, =, MICROSOFT);  }
-{ (Company, !=, MICROSOFT); (Date, >=, 2022-03-31);  }
-{ (Drop, !=, 17.52);  }
-{ (Drop, >, 36.53); (Date, >=, 2022-03-29);  }
-{ (Drop, !=, 44.64);  }
-{ (Variation, !=, 0.28); (Date, !=, 2022-03-31);  }
-{ (Variation, !=, 0.69);  }
+{ (company, =, APPLE);  }
+{ (company, =, APPLE); (date, <=, 2022-06-08);  }
+{ (company, =, AMAZON); (date, <=, 2022-06-07);  }
+{ (company, !=, MICROSOFT);  }
+{ (company, =, AMAZON);  }
+{ (drop, >, 95.59); (variation, !=, 0.67); (date, <=, 2022-06-09);  }
+{ (drop, <=, 64.04);  }
+{ (drop, !=, 67.3);  }
+{ (variation, >, 0.98);  }
+{ (variation, >, 0.91);  }

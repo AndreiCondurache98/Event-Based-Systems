@@ -24,7 +24,7 @@ public class Publication {
 
     @Override
     public String toString() {
-        return "Publicatie: {" + "(company, " + company + "); "
+        return "{" + "(company, " + company + "); "
                 + "(value, " + value + "); (drop, " + drop + "); "
                 + "(variation, " + variation + "); (date, " + date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ")} \n";
     }

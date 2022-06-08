@@ -1,4 +1,2 @@
-{ (company,!=,APPLE); }
-{ (value,<=,5.689417476165946); }
-{ (value,<,4.783973335993728); }
-{ (value,>=,-2.361960470776825); }
+{ (company,=,APPLE); (value,>,0.3); }
+{ (company,=,APPLE); (value,=,0.5); (drop,=,0.1); }

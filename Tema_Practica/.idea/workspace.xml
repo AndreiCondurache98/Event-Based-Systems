@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f18a9a95-fcb1-41f5-aa6d-abb155149d0c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Proiect/Broker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Broker/src/main/java/SubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/src/main/java/SubBroker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Broker/target/classes/SubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/target/classes/SubBroker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/PubBroker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/PubBroker/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/PubBroker/src/main/java/PubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/PubBroker/src/main/java/PubBroker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/PubBroker/target/classes/PubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/PubBroker/target/classes/PubBroker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Publisher/publications.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Publisher/src/main/java/Publisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Publisher/target/classes/Publisher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/src/main/java/Subscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/target/classes/Subscriber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/publications.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/labs/tema_practica/Constraint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/labs/tema_practica/Constraint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/labs/tema_practica/InitParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/labs/tema_practica/InitParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/labs/tema_practica/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/labs/tema_practica/Publication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2AIExPsWNqorraI71JF9eUddYtZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="labs.tema_practica.Main" />
+      <module name="Tema_Practica" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="labs.tema_practica.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f18a9a95-fcb1-41f5-aa6d-abb155149d0c" name="Changes" comment="" />
+      <created>1654688945640</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654688945640</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -25,8 +25,8 @@ public final class InitParams {
     public static final double MIN_VARIATION = 0.00;
     public static final double MAX_VARIATION = 1.00;
     
-    public static final LocalDate MIN_DATE = LocalDate.parse("28.03.2022", DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-    public static final LocalDate MAX_DATE = LocalDate.parse("01.04.2022", DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    public static final LocalDate MIN_DATE = LocalDate.parse("07.06.2022", DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+    public static final LocalDate MAX_DATE = LocalDate.parse("10.06.2022", DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 
     public enum Attribute {
         Company,

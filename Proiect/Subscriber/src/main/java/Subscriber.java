@@ -1,24 +1,29 @@
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.DeliverCallback;
+import com.rabbitmq.client.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.time.Duration;
 
 public class Subscriber extends Thread {
+    private final String QUEUE_RECV = "recv-notifcations";
     private final String QUEUE_SEND = "start-subscriptions";
     private final String EXCHANGE_NAME_NOTIFY = "direct_notifications";
     private final String GUID = UUID.randomUUID().toString();
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss.SSS");
+    private volatile int sum = 0;
+    private int receivedPublications = 0;
 
     public void run() {
+
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         File myObj = new File("subscriptions2.txt");
@@ -39,10 +44,18 @@ public class Subscriber extends Thread {
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String notification = new String(delivery.getBody(), StandardCharsets.UTF_8);
 
-                System.out.println(notification);
+                System.out.println(notification.split("#")[0]);
+
+                String pubTimeOfIssue = notification.split("#")[1];
+                LocalDateTime emmited = LocalDateTime.parse(pubTimeOfIssue, formatter);
+                LocalDateTime currentTime = LocalDateTime.now();
+                Duration duration = Duration.between(emmited, currentTime);
+                sum += duration.toMillis();
+                receivedPublications += 1;
             };
 
             recvNotifChannel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
+
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }

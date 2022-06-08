@@ -1,10 +1,10 @@
-Publicatie: {(company, GOOGLE); (value, 6.2); (drop, 0.08); (variation, 0.77); (date, 31.03.2022)} 
-Publicatie: {(company, AMAZON); (value, 76.9); (drop, 65.23); (variation, 0.26); (date, 31.03.2022)} 
-Publicatie: {(company, APPLE); (value, 81.89); (drop, 12.88); (variation, 0.47); (date, 28.03.2022)} 
-Publicatie: {(company, APPLE); (value, 50.73); (drop, 10.17); (variation, 0.84); (date, 31.03.2022)} 
-Publicatie: {(company, MICROSOFT); (value, 87.78); (drop, 80.09); (variation, 0.47); (date, 28.03.2022)} 
-Publicatie: {(company, MICROSOFT); (value, 20.5); (drop, 13.04); (variation, 0.7); (date, 29.03.2022)} 
-Publicatie: {(company, MICROSOFT); (value, 56.47); (drop, 55.69); (variation, 0.75); (date, 29.03.2022)} 
-Publicatie: {(company, AMAZON); (value, 36.04); (drop, 26.44); (variation, 0.29); (date, 30.03.2022)} 
-Publicatie: {(company, AMAZON); (value, 45.19); (drop, 36.27); (variation, 0.2); (date, 29.03.2022)} 
-Publicatie: {(company, APPLE); (value, 13.82); (drop, 8.39); (variation, 0.31); (date, 30.03.2022)} 
+{(company, AMAZON); (value, 8.66); (drop, 0.3); (variation, 0.38); (date, 08.06.2022)} 
+{(company, GOOGLE); (value, 58.87); (drop, 49.49); (variation, 0.73); (date, 08.06.2022)} 
+{(company, GOOGLE); (value, 88.87); (drop, 70.89); (variation, 0.5); (date, 09.06.2022)} 
+{(company, AMAZON); (value, 95.99); (drop, 6.42); (variation, 0.74); (date, 07.06.2022)} 
+{(company, APPLE); (value, 10.65); (drop, 1.05); (variation, 0.72); (date, 07.06.2022)} 
+{(company, GOOGLE); (value, 62.75); (drop, 39.45); (variation, 0.65); (date, 07.06.2022)} 
+{(company, APPLE); (value, 71.82); (drop, 71.34); (variation, 0.6); (date, 08.06.2022)} 
+{(company, MICROSOFT); (value, 69.49); (drop, 64.53); (variation, 0.99); (date, 07.06.2022)} 
+{(company, APPLE); (value, 90.69); (drop, 80.6); (variation, 0.8); (date, 09.06.2022)} 
+{(company, GOOGLE); (value, 14.45); (drop, 6.54); (variation, 0.7); (date, 09.06.2022)} 

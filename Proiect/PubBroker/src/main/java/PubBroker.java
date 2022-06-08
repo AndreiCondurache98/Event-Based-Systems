@@ -65,8 +65,11 @@ public class PubBroker extends Thread {
             System.out.println(" [*] Waiting for publications...");
 
             DeliverCallback recvNotifCallback = (consumerTag, delivery) -> {
-                String publication = new String(delivery.getBody(), StandardCharsets.UTF_8);
-                JSONObject publicationJSON = new JSONObject(publication);
+                String data = new String(delivery.getBody(), StandardCharsets.UTF_8);
+                JSONObject publicationJSON = new JSONObject(data);
+                String timeOfIssue = publicationJSON.get("timeOfIssue").toString();
+                publicationJSON.remove("timeOfIssue");
+                String publication = publicationJSON.toString();
 
                 System.out.println(" [x] Publication : '" + publicationJSON + "'");
 
@@ -78,7 +81,7 @@ public class PubBroker extends Thread {
                             if (match(publicationJSON, s)) {
                                 System.out.println(" [x] Subscription : '" + s + "'");
                                 System.out.println("A facut match!");
-                                String response = s + "#" + publication;
+                                String response = s + "#" + publication + "#" + timeOfIssue;
                                 sendNotifChannel.basicPublish(EXCHANGE_NAME_PUB, key, null, response.getBytes());
                             }
                         } catch (ParseException e) {
