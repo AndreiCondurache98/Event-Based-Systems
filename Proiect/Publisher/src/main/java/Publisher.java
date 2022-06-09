@@ -18,7 +18,7 @@ public class Publisher {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        File myObj = new File("publications.txt");
+        File myObj = new File("publications1.txt");
 
         try (Connection connection = factory.newConnection();
              Channel channel = connection.createChannel()) {

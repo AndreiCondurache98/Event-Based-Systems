@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 public final class InitParams {
 
     public static final int PUBLICATIONS_NUMBER = 100000;
-    public static final int SUBSCRIPTIONS_NUMBER = 10000;
+    public static final int SUBSCRIPTIONS_NUMBER = 5000;
     
     public static final double COMPANY_FREQUENCY = 0.8;
     public static final double VALUE_FREQUENCY = 0.7;

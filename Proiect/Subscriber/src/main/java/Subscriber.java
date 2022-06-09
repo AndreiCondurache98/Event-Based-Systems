@@ -29,7 +29,7 @@ public class Subscriber extends Thread {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        File myObj = new File("subscriptions.txt");
+        File myObj = new File("subscriptions1.txt");
 
         /* WAITING FOR NOTIFICATIONS */
         Connection recvNotifConnection;
@@ -48,7 +48,7 @@ public class Subscriber extends Thread {
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String notification = new String(delivery.getBody(), StandardCharsets.UTF_8);
 
-                System.out.println(notification.split("#")[0]);
+                System.out.println(LocalDateTime.now().format(formatter) + notification.split("#")[0]);
 
                 String pubTimeOfIssue = notification.split("#")[1];
                 LocalDateTime emitted = LocalDateTime.parse(pubTimeOfIssue, formatter);
