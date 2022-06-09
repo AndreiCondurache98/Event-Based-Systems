@@ -21,32 +21,53 @@ public class Publisher {
         File myObj = new File("publications.txt");
 
         try (Connection connection = factory.newConnection();
-             Channel channel = connection.createChannel();
-             Scanner myReader = new Scanner(myObj)) {
+             Channel channel = connection.createChannel()) {
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                JSONObject jsonObject = new JSONObject();
 
-                Pattern regex = Pattern.compile("\\((.*?)\\)");
-                Matcher regexMatcher = regex.matcher(data);
+            long start = System.currentTimeMillis();
+            long end = start + 1 * 1000;
+            while (System.currentTimeMillis() < end) {
 
-                while (regexMatcher.find()) {
-                    String pub = regexMatcher.group(1);
-                    String[] fields = pub.split(",");
+                Scanner myReader = new Scanner(myObj);
 
-                    jsonObject.put(fields[0], fields[1]);
+                while (myReader.hasNextLine()) {
+                    if(System.currentTimeMillis() >= end)
+                        break;
+
+                    String data = myReader.nextLine();
+                    JSONObject jsonObject = new JSONObject();
+
+                    Pattern regex = Pattern.compile("\\((.*?)\\)");
+                    Matcher regexMatcher = regex.matcher(data);
+
+                    while (regexMatcher.find()) {
+                        String pub = regexMatcher.group(1);
+                        String[] fields = pub.split(",");
+
+                        jsonObject.put(fields[0], fields[1]);
+                    }
+
+                    LocalDateTime timeOfIssue = LocalDateTime.now();
+                    jsonObject.put("timeOfIssue", dtf.format(timeOfIssue));
+
+                    channel.basicPublish("", QUEUE_NAME, null, jsonObject.toString().getBytes());
+                    System.out.println(" [x] Sent '" + jsonObject + "'");
                 }
-
-                LocalDateTime timeOfIssue = LocalDateTime.now();
-                jsonObject.put("timeOfIssue", dtf.format(timeOfIssue));
-
-                channel.basicPublish("", QUEUE_NAME, null, jsonObject.toString().getBytes());
-                System.out.println(" [x] Sent '" + jsonObject + "'");
             }
 
+            int averageLatency = 0, nrOfElements = 0;
+
+//            File file = new File("..\\Subscriber\\results.txt");
+//            Scanner myReader = new Scanner(file);
+//            while (myReader.hasNextLine()) {
+//                String data = myReader.nextLine();
+//                int value = Integer.parseInt(data);
+//                averageLatency += value;
+//                nrOfElements++;
+//            }
+//            System.out.println("AVERAGE LATENCY: " + (float)averageLatency/nrOfElements);
         }
     }
 }

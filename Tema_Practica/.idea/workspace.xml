@@ -6,19 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="f18a9a95-fcb1-41f5-aa6d-abb155149d0c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Proiect/Broker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proiect/Broker/src/main/java/SubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/src/main/java/SubBroker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proiect/Broker/target/classes/SubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/target/classes/SubBroker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/PubBroker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/PubBroker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proiect/PubBroker/src/main/java/PubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/PubBroker/src/main/java/PubBroker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Proiect/PubBroker/target/classes/PubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/PubBroker/target/classes/PubBroker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Publisher/publications.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Publisher/src/main/java/Publisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Publisher/target/classes/Publisher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/src/main/java/Subscriber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/target/classes/Subscriber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/publications.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/labs/tema_practica/Constraint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/labs/tema_practica/Constraint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/labs/tema_practica/InitParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/labs/tema_practica/InitParams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/labs/tema_practica/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/labs/tema_practica/Publication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/subscriptions.txt" afterDir="false" />

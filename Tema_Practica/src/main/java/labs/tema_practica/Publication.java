@@ -26,7 +26,7 @@ public class Publication {
     public String toString() {
         return "{" + "(company, " + company + "); "
                 + "(value, " + value + "); (drop, " + drop + "); "
-                + "(variation, " + variation + "); (date, " + date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) + ")} \n";
+                + "(variation, " + variation + "); (date, " + date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + ")} \n";
     }
     
     public String getCompany() {

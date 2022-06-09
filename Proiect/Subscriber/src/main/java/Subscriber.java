@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
@@ -24,14 +25,17 @@ public class Subscriber extends Thread {
 
     public void run() {
 
+        System.out.println("SUBSCRIBER GUID: " + GUID);
+
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        File myObj = new File("subscriptions2.txt");
+        File myObj = new File("subscriptions.txt");
 
         /* WAITING FOR NOTIFICATIONS */
         Connection recvNotifConnection;
         Channel recvNotifChannel;
         try {
+
             recvNotifConnection = factory.newConnection();
             recvNotifChannel = recvNotifConnection.createChannel();
             recvNotifChannel.exchangeDeclare(EXCHANGE_NAME_NOTIFY, "direct");
@@ -47,11 +51,16 @@ public class Subscriber extends Thread {
                 System.out.println(notification.split("#")[0]);
 
                 String pubTimeOfIssue = notification.split("#")[1];
-                LocalDateTime emmited = LocalDateTime.parse(pubTimeOfIssue, formatter);
+                LocalDateTime emitted = LocalDateTime.parse(pubTimeOfIssue, formatter);
                 LocalDateTime currentTime = LocalDateTime.now();
-                Duration duration = Duration.between(emmited, currentTime);
-                sum += duration.toMillis();
-                receivedPublications += 1;
+                Duration duration = Duration.between(emitted, currentTime);
+
+                FileWriter writer = new FileWriter("results.txt", true);
+                writer.write(String.valueOf(duration.toMillis()) + "\n");
+                writer.flush();
+                writer.close();
+//                sum += duration.toMillis();
+//                receivedPublications += 1;
             };
 
             recvNotifChannel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
