@@ -1,0 +1,2 @@
+{ (company, =, APPLE); (value, <=, 7.85); (drop, <=, 38.44);  }
+{ (company, =, GOOGLE); (value, >, 43.88); }

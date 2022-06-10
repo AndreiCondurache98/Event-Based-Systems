@@ -20,7 +20,6 @@ public class Subscriber extends Thread {
     private final String EXCHANGE_NAME_NOTIFY = "direct_notifications";
     private final String GUID = UUID.randomUUID().toString();
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss.SSS");
-    private volatile int sum = 0;
     private int receivedPublications = 0;
 
     public void run() {
@@ -29,7 +28,7 @@ public class Subscriber extends Thread {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        File myObj = new File("subscriptions1.txt");
+        File myObj = new File("subscriptions3.txt");
 
         /* WAITING FOR NOTIFICATIONS */
         Connection recvNotifConnection;
@@ -59,8 +58,12 @@ public class Subscriber extends Thread {
                 writer.write(String.valueOf(duration.toMillis()) + "\n");
                 writer.flush();
                 writer.close();
-//                sum += duration.toMillis();
-//                receivedPublications += 1;
+
+                receivedPublications += 1;
+                FileWriter writer1 = new FileWriter(GUID.toString()+".txt", false);
+                writer1.write(String.valueOf(receivedPublications));
+                writer1.flush();
+                writer1.close();
             };
 
             recvNotifChannel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
