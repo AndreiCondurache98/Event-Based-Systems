@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class PubBroker extends Thread {
     private final String EXCHANGE_NAME = "subs-exchange";
@@ -43,7 +44,7 @@ public class PubBroker extends Thread {
 
                 routingTable.get(guid).add(subJson.getJSONArray("subscription"));
 
-                System.out.println(" [x] : '" + subscription + "'");
+                System.out.println(" [x] Received subscription : '" + subscription + "'");
             };
 
             channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
@@ -63,6 +64,7 @@ public class PubBroker extends Thread {
             sendNotifChannel.exchangeDeclare(EXCHANGE_NAME_PUB, "direct");
 
             System.out.println(" [*] Waiting for publications...");
+            AtomicInteger totalMatch = new AtomicInteger();
 
             DeliverCallback recvNotifCallback = (consumerTag, delivery) -> {
                 String data = new String(delivery.getBody(), StandardCharsets.UTF_8);
@@ -79,8 +81,8 @@ public class PubBroker extends Thread {
                     for (JSONArray s : currentSubscriptions) {
                         try {
                             if (match(publicationJSON, s)) {
-                                System.out.println(" [x] Subscription : '" + s + "'");
-                                System.out.println("A facut match!");
+                                totalMatch.getAndIncrement();
+                                System.out.println("Match count: " + totalMatch.get());
                                 String response = s + "#" + publication + "#" + timeOfIssue;
                                 sendNotifChannel.basicPublish(EXCHANGE_NAME_PUB, key, null, response.getBytes());
                             }
@@ -91,8 +93,7 @@ public class PubBroker extends Thread {
                 }
             };
 
-            recvPubChannel.basicConsume(RECV_PUB_QUEUE, true, recvNotifCallback, consumerTag -> {
-            });
+            recvPubChannel.basicConsume(RECV_PUB_QUEUE, true, recvNotifCallback, consumerTag -> { });
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
@@ -120,12 +121,20 @@ public class PubBroker extends Thread {
                     Date d1 = sdFormat.parse(s.getString("value"));
                     Date d2 = sdFormat.parse(publication.getString("date"));
                     switch (s.getString("operator")) {
+                        case "<":
+                            if(d1.compareTo(d2) <= 0)
+                                return false;
+                            break;
                         case "<=":
-                            if(d1.compareTo(d2) > 0)
+                            if(d1.compareTo(d2) < 0)
                                 return false;
                             break;
                         case ">=":
-                            if(d1.compareTo(d2) < 0)
+                            if(d1.compareTo(d2) > 0)
+                                return false;
+                            break;
+                        case ">":
+                            if(d1.compareTo(d2) >= 0)
                                 return false;
                             break;
                         case "=":

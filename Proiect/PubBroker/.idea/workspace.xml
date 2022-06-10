@@ -6,18 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="94e5964a-5639-4296-94ed-5c3c30c3cf40" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Broker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/src/main/java/SubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/src/main/java/SubBroker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Broker/target/classes/SubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/target/classes/SubBroker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PubBroker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PubBroker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/publications.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Subscriber/results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/results.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Subscriber/subscriptions1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/subscriptions1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/subscriptions2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/subscriptions2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Tema_Practica/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Tema_Practica/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Tema_Practica/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/publications.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Tema_Practica/src/main/java/labs/tema_practica/InitParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/src/main/java/labs/tema_practica/InitParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Tema_Practica/src/main/java/labs/tema_practica/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/src/main/java/labs/tema_practica/Publication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Tema_Practica/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/subscriptions.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +49,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -102,5 +108,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

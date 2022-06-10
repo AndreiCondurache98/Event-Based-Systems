@@ -29,13 +29,12 @@ public class Subscriber extends Thread {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        File myObj = new File("subscriptions.txt");
+        File myObj = new File("subscriptions2.txt");
 
         /* WAITING FOR NOTIFICATIONS */
         Connection recvNotifConnection;
         Channel recvNotifChannel;
         try {
-
             recvNotifConnection = factory.newConnection();
             recvNotifChannel = recvNotifConnection.createChannel();
             recvNotifChannel.exchangeDeclare(EXCHANGE_NAME_NOTIFY, "direct");
@@ -49,18 +48,6 @@ public class Subscriber extends Thread {
                 String notification = new String(delivery.getBody(), StandardCharsets.UTF_8);
 
                 System.out.println(notification.split("#")[0]);
-
-                String pubTimeOfIssue = notification.split("#")[1];
-                LocalDateTime emitted = LocalDateTime.parse(pubTimeOfIssue, formatter);
-                LocalDateTime currentTime = LocalDateTime.now();
-                Duration duration = Duration.between(emitted, currentTime);
-
-                FileWriter writer = new FileWriter("results.txt", true);
-                writer.write(String.valueOf(duration.toMillis()) + "\n");
-                writer.flush();
-                writer.close();
-//                sum += duration.toMillis();
-//                receivedPublications += 1;
             };
 
             recvNotifChannel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
