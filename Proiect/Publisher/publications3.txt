@@ -1,0 +1,3 @@
+{(company, APPLE); (value, 71.93); (drop, 65.35); (variation, 0.38); (date, 2022-06-07)} 
+{(company, GOOGLE); (value, 58.59); (drop, 47.11); (variation, 0.44); (date, 2022-06-08)} 
+{(company, MICROSOFT); (value, 53.51); (drop, 38.44); (variation, 0.19); (date, 2022-06-07)}

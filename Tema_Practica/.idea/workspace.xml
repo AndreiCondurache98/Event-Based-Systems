@@ -5,20 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f18a9a95-fcb1-41f5-aa6d-abb155149d0c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Proiect/Publisher/publications1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Proiect/Publisher/publications2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Broker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Broker/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Broker/src/main/java/SubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/src/main/java/SubBroker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Broker/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Broker/target/classes/SubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Broker/target/classes/SubBroker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/PubBroker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/PubBroker/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../Proiect/PubBroker/src/main/java/PubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/PubBroker/src/main/java/PubBroker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/PubBroker/target/classes/PubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/PubBroker/target/classes/PubBroker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Publisher/publications.txt" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/publications.txt" beforeDir="false" />
+>>>>>>> 3c61c0dcb2dbd64a7557846e34fe0d7e3486f4c5
       <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Publisher/src/main/java/Publisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Publisher/target/classes/Publisher.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/results.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/src/main/java/Subscriber.java" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions.txt" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/subscriptions2.txt" afterDir="false" />
+>>>>>>> 3c61c0dcb2dbd64a7557846e34fe0d7e3486f4c5
       <change beforePath="$PROJECT_DIR$/../Proiect/Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect/Subscriber/target/classes/Subscriber.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/publications.txt" afterDir="false" />

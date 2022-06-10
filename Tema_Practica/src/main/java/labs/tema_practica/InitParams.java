@@ -9,8 +9,13 @@ import java.time.format.DateTimeFormatter;
  */
 public final class InitParams {
 
+<<<<<<< HEAD
     public static final int PUBLICATIONS_NUMBER = 100;
     public static final int SUBSCRIPTIONS_NUMBER = 10000;
+=======
+    public static final int PUBLICATIONS_NUMBER = 100000;
+    public static final int SUBSCRIPTIONS_NUMBER = 5000;
+>>>>>>> 3c61c0dcb2dbd64a7557846e34fe0d7e3486f4c5
     
     public static final double COMPANY_FREQUENCY = 1.0;
     public static final double VALUE_FREQUENCY = 0.8;

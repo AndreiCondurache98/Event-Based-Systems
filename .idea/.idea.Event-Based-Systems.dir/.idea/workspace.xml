@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d079364b-527a-4aae-a472-bd161056459c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Proiect/Broker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Broker/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Broker/src/main/java/SubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Broker/src/main/java/SubBroker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Broker/target/classes/SubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Broker/target/classes/SubBroker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/PubBroker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/PubBroker/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/PubBroker/src/main/java/PubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/PubBroker/src/main/java/PubBroker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/PubBroker/target/classes/PubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/PubBroker/target/classes/PubBroker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Publisher/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Publisher/publications.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Publisher/src/main/java/Publisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Publisher/target/classes/Publisher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Subscriber/results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Subscriber/results.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Subscriber/src/main/java/Subscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Subscriber/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Subscriber/subscriptions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Subscriber/subscriptions1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Subscriber/subscriptions1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Subscriber/subscriptions2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Subscriber/subscriptions2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proiect/Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proiect/Subscriber/target/classes/Subscriber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema_Practica/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Tema_Practica/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema_Practica/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tema_Practica/publications.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema_Practica/src/main/java/labs/tema_practica/InitParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tema_Practica/src/main/java/labs/tema_practica/InitParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tema_Practica/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tema_Practica/subscriptions.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ANqEosRikDTMdeWZDvyiB7hckM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1654860294937</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654860294937</updated>
+      <workItem from="1654860428241" duration="1000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

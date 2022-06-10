@@ -20,7 +20,6 @@ public class Subscriber extends Thread {
     private final String EXCHANGE_NAME_NOTIFY = "direct_notifications";
     private final String GUID = UUID.randomUUID().toString();
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss.SSS");
-    private volatile int sum = 0;
     private int receivedPublications = 0;
 
     public void run() {
@@ -48,6 +47,22 @@ public class Subscriber extends Thread {
                 String notification = new String(delivery.getBody(), StandardCharsets.UTF_8);
 
                 System.out.println(notification.split("#")[0]);
+
+                String pubTimeOfIssue = notification.split("#")[1];
+                LocalDateTime emitted = LocalDateTime.parse(pubTimeOfIssue, formatter);
+                LocalDateTime currentTime = LocalDateTime.now();
+                Duration duration = Duration.between(emitted, currentTime);
+
+                FileWriter writer = new FileWriter("results.txt", true);
+                writer.write(String.valueOf(duration.toMillis()) + "\n");
+                writer.flush();
+                writer.close();
+
+                receivedPublications += 1;
+                FileWriter writer1 = new FileWriter(GUID.toString()+".txt", false);
+                writer1.write(String.valueOf(receivedPublications));
+                writer1.flush();
+                writer1.close();
             };
 
             recvNotifChannel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
