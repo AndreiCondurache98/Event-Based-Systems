@@ -1,10 +1,8 @@
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import org.json.JSONObject;
 
 import java.io.File;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -19,7 +17,7 @@ public class Publisher {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        File myObj = new File("publications3.txt");
+        File myObj = new File("publications.txt");
 
         try (Connection connection = factory.newConnection();
              Channel channel = connection.createChannel()) {
@@ -30,25 +28,31 @@ public class Publisher {
 
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                JSONObject jsonObject = new JSONObject();
 
                 Pattern regex = Pattern.compile("\\((.*?)\\)");
                 Matcher regexMatcher = regex.matcher(data);
+
+                List<String> fieldList = new ArrayList<>();
 
                 while (regexMatcher.find()) {
                     String pub = regexMatcher.group(1);
                     String[] fields = pub.split(",");
 
-                    jsonObject.put(fields[0], fields[1]);
+                    fieldList.add(fields[1]);
                 }
 
-                LocalDateTime timeOfIssue = LocalDateTime.now();
-                jsonObject.put("timeOfIssue", dtf.format(timeOfIssue));
+                Pub.Publication pub = Pub.Publication.newBuilder()
+                        .setCompany(fieldList.get(0))
+                        .setValue(Double.parseDouble(fieldList.get(1)))
+                        .setDrop(Double.parseDouble(fieldList.get(2)))
+                        .setVariation(Double.parseDouble(fieldList.get(3)))
+                        .setDate(fieldList.get(4))
+                        .build();
 
-                channel.basicPublish("", QUEUE_NAME, null, jsonObject.toString().getBytes());
-                System.out.println(" [x] Sent '" + jsonObject + "'");
+                channel.basicPublish("", QUEUE_NAME, null, pub.toByteArray());
+                System.out.println(" [x] Sent '" + pub + "'");
             }
-            String data = myReader.nextLine();
+            /*String data = myReader.nextLine();
             JSONObject jsonObject = new JSONObject();
 
             Pattern regex = Pattern.compile("\\((.*?)\\)");
@@ -66,7 +70,7 @@ public class Publisher {
 
             channel.basicPublish("", QUEUE_NAME, null, jsonObject.toString().getBytes());
             sendPublications += 1;
-            System.out.println(" [x] Sent '" + jsonObject + "'");
+            System.out.println(" [x] Sent '" + jsonObject + "'");*/
         }
     }
 }

@@ -5,35 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94e5964a-5639-4296-94ed-5c3c30c3cf40" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Publisher/publications3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Subscriber/subscriptions3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Analyzer/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Analyzer/src/main/java/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Pub.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Publisher/protoc.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Publisher/pub.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Broker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Broker/src/main/java/SubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/src/main/java/SubBroker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Broker/target/classes/SubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Broker/target/classes/SubBroker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PubBroker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PubBroker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/PubBroker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PubBroker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Publisher/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/publications.txt" afterDir="false" />
-=======
->>>>>>> 3c61c0dcb2dbd64a7557846e34fe0d7e3486f4c5
       <change beforePath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/src/main/java/Publisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Publisher/target/classes/Publisher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Subscriber/results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/results.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/src/main/java/Subscriber.java" afterDir="false" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/subscriptions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/subscriptions1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/subscriptions1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/subscriptions2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/subscriptions2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Tema_Practica/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Tema_Practica/publications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/publications.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Tema_Practica/src/main/java/labs/tema_practica/InitParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/src/main/java/labs/tema_practica/InitParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Tema_Practica/subscriptions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Tema_Practica/subscriptions.txt" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Subscriber/target/classes/Subscriber.class" afterDir="false" />
->>>>>>> 3c61c0dcb2dbd64a7557846e34fe0d7e3486f4c5
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +55,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
@@ -101,6 +96,8 @@
       <option name="presentableId" value="Default" />
       <updated>1654452877915</updated>
       <workItem from="1654452879417" duration="19577000" />
+      <workItem from="1656313306911" duration="147000" />
+      <workItem from="1656313619188" duration="296000" />
     </task>
     <servers />
   </component>

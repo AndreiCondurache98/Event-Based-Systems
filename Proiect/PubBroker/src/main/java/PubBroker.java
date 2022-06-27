@@ -67,23 +67,19 @@ public class PubBroker extends Thread {
             AtomicInteger totalMatch = new AtomicInteger();
 
             DeliverCallback recvNotifCallback = (consumerTag, delivery) -> {
-                String data = new String(delivery.getBody(), StandardCharsets.UTF_8);
-                JSONObject publicationJSON = new JSONObject(data);
-                String timeOfIssue = publicationJSON.get("timeOfIssue").toString();
-                publicationJSON.remove("timeOfIssue");
-                String publication = publicationJSON.toString();
+                Pub.Publication data = Pub.Publication.parseFrom(delivery.getBody());
 
-                System.out.println(" [x] Publication : '" + publicationJSON + "'");
+                System.out.println("Company: " + data.getCompany() + ", value: " + data.getValue() + ", data: " + data.getDate());
 
                 for (String key : routingTable.keySet()) {
                     List<JSONArray> currentSubscriptions = routingTable.get(key);
 
                     for (JSONArray s : currentSubscriptions) {
                         try {
-                            if (match(publicationJSON, s)) {
+                            if (match(data, s)) {
                                 totalMatch.getAndIncrement();
                                 System.out.println("Match count: " + totalMatch.get());
-                                String response = s + "#" + publication + "#" + timeOfIssue;
+                                String response = s + "#" + data;
                                 sendNotifChannel.basicPublish(EXCHANGE_NAME_PUB, key, null, response.getBytes());
                             }
                         } catch (ParseException e) {
@@ -99,19 +95,19 @@ public class PubBroker extends Thread {
         }
     }
 
-    private static boolean match(JSONObject publication, JSONArray subscription) throws ParseException {
+    private static boolean match(Pub.Publication publication, JSONArray subscription) throws ParseException {
         for(int i = 0; i < subscription.length(); i++) {
             JSONObject s = subscription.getJSONObject(i);
 
             switch (s.getString("field")) {
                 case "company":
                     if(s.getString("operator").equals("=")) {
-                        if(! s.getString("value").equals(publication.getString("company"))) {
+                        if(! s.getString("value").equals(publication.getCompany())) {
                             return false;
                         }
                     }
                     else {
-                        if(s.getString("value").equals(publication.getString("company"))) {
+                        if(s.getString("value").equals(publication.getCompany())) {
                             return false;
                         }
                     }
@@ -119,7 +115,7 @@ public class PubBroker extends Thread {
                 case "date":
                     SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
                     Date d1 = sdFormat.parse(s.getString("value"));
-                    Date d2 = sdFormat.parse(publication.getString("date"));
+                    Date d2 = sdFormat.parse(publication.getDate());
                     switch (s.getString("operator")) {
                         case "<":
                             if(d1.compareTo(d2) <= 0)
@@ -151,7 +147,10 @@ public class PubBroker extends Thread {
                 case "drop":
                 case "variation":
                     Double number1 = Double.parseDouble(s.getString("value"));
-                    Double number2 = Double.parseDouble(publication.getString(s.getString("field")));
+                    Double number2 = s.getString("field").equals("value") ?
+                            publication.getValue() :
+                            (s.getString("field").equals("drop") ?
+                                    publication.getDrop() : publication.getVariation());
                     switch (s.getString("operator")) {
                         case "<=":
                             if (number1 < number2)

@@ -92,6 +92,7 @@ public class SubBroker extends Thread {
                 String[] response = notification.split("#");
                 String subscriptionMatched = response[0];
                 String publicationMatched = response[1];// + "#" + response[2];
+
                 Set<String> guidsToNotify = routingTable.get(subscriptionMatched);
 
                 for (String guid : guidsToNotify) {
